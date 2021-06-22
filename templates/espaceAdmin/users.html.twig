@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello JoueurssController!
+{% endblock %}
+{% block body %}
+  <br>
+  <div class="container mt-7">
+    <div class="row justify-content-around justify-content-center">
+      <div class="card col-3" style="margin: 20px">
+        <h4 class="card-name align-self-center">
+          {{ connectedUser.nom }}
+          <i>
+            {{ connectedUser.prenom }}</i>
+        </h4>
+        <h5 class="card-name align-self-start"></h5>
+        <h5 class="card-name align-self-center">
+          <i>
+            {{ connectedUser.email }}</i>
+        </h5><br>
+        <div class="p-4">
+          <a href="{{ path('updateUser' , {'id' : connectedUser.id} ) }}">
+            <button class="btn btn-success">
+              <i class="fas fa-edit"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

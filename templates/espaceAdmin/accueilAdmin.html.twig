@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello ArticlesController!
+{% endblock %}
+{% block body %}
+  <header>
+    <nav class="float-right text-white">
+      <!-- Avatar -->
+      <ol class="nav-item dropdown ">
+        {{connectedUser.nom}}
+        {{connectedUser.prenom}}
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle " height="40" alt="" loading="lazy"/>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li>
+            <a class="dropdown-item" href="{{ path('user' , {'id' : connectedUser.id} )}}">Mon profil</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ path('adresseMails' )}}">Email Clients</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ path('deco' )}}">Déconnexion</a>
+          </li>
+        </ul>
+    </ol>
+  </nav>
+  <div class="container-fluid bg-dark  ">
+    <div class="row">
+      {# logo #}
+      <div class="col-3">
+        <img src="http://powerfulafrica.com/wp-content/uploads/2021/03/image0-2.jpeg" style="height:100px; widght:200px;" alt="">
+      </div>
+      {# pub princpale #}
+      {% for element in maPub %}
+        <div class="row col-9 p-4">
+          <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-mdb-interval="10000">
+                <img src="../../images/publiciteHeader/{{element.imageName}}" class="d-block w-100 carousel-img " style="height:300px" alt="..."/>
+              </div>
+              <div class="carousel-item" data-mdb-interval="2000">
+                <img src="https://myafricainfos.com/wp-content/uploads/2020/07/Africa-XYZ-E-Merchant-Card-MyAfricaInfos.jpg" class="d-block w-100 carousel-img" style="height:300px" alt="..."/>
+              </div>
+              <div class="carousel-item">
+                <img src="https://img.freepik.com/photos-gratuite/entreprise-transporteur-succes-jeune-homme-affaires-peau-sombre-ayant-regard-heureux-souriant-gardant-bouche-grande-ouverte-faisant-gestes-montrant-signe-ok-apres-avoir-conclu-transaction-rentable-langage-du-corps_273609-1419.jpg?size=626&ext=jpg" class="d-block w-100 carousel-img " style="height:300px" alt="..."/>
+              </div>
+            </div>
+            <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <a href="{{ path('deletePub', {'id' : element.id} ) }}">
+            <i class="btn btn-danger far fa-trash-alt"></i>
+          </a>
+          <a href="{{ path('updatePub', {'id' : element.id} ) }}">
+            <i class="btn btn-success fas fa-edit"></i>
+          </a>
+        {% endfor %}
+        <!-- Controls -->
+        {# bouton #}
+        <!-- Carousel wrapper -->
+      </div>
+      <a class="btn btn-danger" href="{{ path('newPub', {'id' : connectedUser.id}) }}">
+        Add a pub
+      </a>
+      {# navbarre #}
+      <div class="bg-dark mb-5">
+        <nav class=" navbar navbar-expand-lg border ">
+          <ol class="breadcrumb   p-1">
+            <!-- Icon dropdown -->
+            <li class="breadcrumb-item py-1 ">
+              <a href="#" class='text-light '>
+                <i class="france flag "></i>Franch</a>
+            </li>
+            <li class="breadcrumb-item pr-5 py-1">
+              <a href="#" class='text-light '>
+                <i class="united kingdom flag"></i>English</a>
+            </li>
+            <li class="breadcrumb-item p-1">
+              <a href="#" class='text-light display-6'>Home</a>
+            </li>
+            <li class="breadcrumb-item p-1">
+              <a href="#" class='text-light display-6'>
+                About</a>
+            </li>
+            <li class="breadcrumb-item active p-1 " aria-current="page">
+              <a href="#" class='text-light display-6'>Magazine</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+  </div>
+  <body class="bg-dark">
+    {# Atualité #}
+    <div class="container row col-11 mx-auto ">
+      <div class="row col-3">
+        <div>
+          {# publicité d'actualité #}
+          <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-mdb-interval="4000">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEUAAAD///////vZ2dlfX1/KysX///mysrIuLi5xcW6qqqZdXVvS0s2GhoMZGRmmpqLd3djs7ObExL9/f3wRERF2dnJAQD/19e+Tk5BGRkQ2NjWzs69NTUu5ubXk5N/Y2NMqKimcnJhsaGiEhIHl5d9VVVIdHRxMTEsUFBOOjouMh4eAe3s6ODjn5+ckJCOEhIAC2JYAAAAEyUlEQVR4nO3ceXOiPAAG8MArrBwql4AcclTwqLXf/9ttLqy1u7MzfdtCnOf3h0AMTh6OhDCdEgIAAAAAAAAAAAAAAAAAAAAAAAAAAADwKLqXF+MjdzZ2u77OTNN0U7+nhWO36+vQhJbzUT12u74OTViP3YbvRRPOx27D90JC9SGh+pBQfUioPiRUHxKqDwnVh4TqQ0L1IaH6kFB93ctLPXYbAAAAAAD+Zel6blWVMd8ojJ3hbu0LW/caUSFv+SIqCVnsPGZbkPm2cis3r0WNLS+uDktf/olHnNId/PXPJvmbpb8ipDbMDV1PE4sVNQkLlSf8+4Nf8qWzYt/Hh+Vy2ROS6TRLViX8WARbsuTFvX4UP7qhlaOp/EULT0iixCDkSd+IspDldXSHrbeJSJrHLGEt98rMJ/aZsH1ZQqE3p5uQGAnp/XwodD36IU5eGZr8MnUJSzhMNUVCWUWNhN6WWNp+KAzNjpAVO3lLl+xYjDW9s2jCXlbITNb8Qn9lG4EnS6ec0KF30Eof2k8ybcE+aFexbkhj0hKDFadmmed56bCECxIVPi8lgZ8z88kmdMO1zWLabwlrjTXVC2jrYxLrFrkErDhNnH1RFBeWsCq9nSNqB7uYFR8mmzCfhVZG10ItGwpbnXWqrGOp6HIbkCPv+W97mpAUiRxP1LgPqbOZDoVipMj0Nb/9moQE/PTe9TQLXYyi14RRIhN2zSQTEtuUKxtdDNauwW+0i5aKXva+LzVEtGtC4gZiubKmmZB2ijVbOL4ttp9M0ZVUpviD2zRZypoi4fxuPCSWyQ+Nw4aWSJvIM02f2G8bjVcujkY1NG0uGkxSPxJfa1v51MY7W3q/mgEdLA3/+gPhLlgcy4AdiIPm88pvB3AsWX2zseysNr75TiwiubzE3OZAnzxFv5tZ9Olnnr3tERXXHxCV4wd/Hw0A8DfX3tR6WlBHOvZt2Fp7kN8vLmKlfrJt2xpqd8XPNvPz6tMwjar8tKHoo9tRP4avrngHQNaaOAZ50nRnx97KZLtqhMZ+ivP8LNcqdyhbmGxcKxM+9K1NntDdibGu3fFTOnNN50fb+WmHtj6dxeptQpat0/h8XyRszOFUz/nVGxzkfHHy9jGx5Em8T9hq/CyJhOb7PJuSVtoTFdDTlMmT6FbZhiIsYU0/dyIxTzjXju92WznDe5upO7N+41m8JHX9vKSWLOEqXRm5mFvwhBvt9Xa3nk2cUjO7/7kJ4tnOJ96J3F6la8sb3jjxhL2W3u4W8tmgb5PJ608tc+JB7/rSYaIl7sPEvd2votNlI0hMMnkzMS3anNgIcNfTtOIl8bUv7d5260T4+fDuZrqiVi6f2bT+vi8td3xDjoeeL+d+TkECuVomP9bUT9oPT2zdiQ5y1fUpRSTsfYMt1uIVVG0kx5hOmu2yruULGnJ+f3dO0D6SK4cZHTCa6zU3K2u2yAKDjh1dOZy8MijzFb1YresF24z/1gJ+1DxWYQD9P0rtZewmfLNf2n9jN+GbIaH6kFB9SKg+JFQfEqoPCdWHhOpDQvUhofqQUH1IqL6HSji3P1p5j5Sw+Ph/YnVde6SEvfUH6a/jv/cEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHhQvwE4clOCyaKWygAAAABJRU5ErkJggg==" class="d-block w-100" alt="..."/>
+              </div>
+            </div>
+            <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          {# image statique #}
+          <img src="http://powerfulafrica.com/wp-content/uploads/2021/03/telechargement.jpegpk" alt="">
+        </div>
+      </div>
+      {# le magazine en cours #}
+      {% for element in magazine %}
+        <div class="col-5">
+          <h4 class="text-center py-3 p-4 text-white">{{element.titre}}</h4>
+          <a href="{{ path('updateMagazine', {'id' : element.id} ) }}">
+            <img class="col-12" src="/images/magazine/{{element.imageName}}" alt="">
+          </a>
+        </div>
+      {% endfor %}
+      {# Articles #}
+      <div class="row col-4 text-white ">
+        <div class="card" style=" background-color:black; ">
+          {% for element in mesArticles %}
+
+            <div class="row g-0">
+              <div class="col-md-4 ">
+                <img src="/images/articles/{{element.imageName}}" alt="..." class="img-fluid  "/>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title" style="color:red">{{element.titre}}</h5>
+                  <p class="card-text">
+                    {{element.contenu}}
+                  </p>
+                  <div class="text-muted">{{element.datePublication}}</div>
+                </div>
+                <a href="{{ path('deleteArticle', {'id' : element.id} ) }}">
+                  <i class="btn btn-danger far fa-trash-alt"></i>
+                </a>
+                <a href="{{ path('updateArticle', {'id' : element.id} ) }}">
+                  <i class="btn btn-success fas fa-edit"></i>
+                </a>
+              </div>
+              <hr class="bg-warning   ">
+            </div>
+          {% endfor %}
+        </div>
+        <a  href="{{ path('newArticle' , {'id' : connectedUser.id} ) }}"> <i class="fas fa-plus-circle"></i> ajouter </a> </div>
+		 {# image du pied en page #}
+		  <hr class="bg-light p-1 "> 
+		  <div class="container-fluid p-4 bg-dark"> 
+		  <!-- Section: Images --> <section class="">
+		   <div class="row"> <div class="bg-image hover-overlay ripple shadow-1-strong rounded w-100 h-100" data-ripple-color="light">
+		    {% for item in ancienMagazine %} 
+			<img src="/images/ancienMagazine/{{item.imageName}}" style=" height: 200px; width: 170px;" class=" p-1">
+			 <a href="{{ path('deleteAncienMagazine', {'id' : item.id} ) }}"> <i class="btn btn-danger far fa-trash-alt"></i>
+      </a>
+    {% endfor %}
+  </div>
+<a <i class="fas fa-plus-circle" href="{{ path('ancienMag' , {'id' : connectedUser.id} ) }}"> ajouter </a> 
+</section>
+ </body>
+  <!-- Section: Images --> 
+  </div> <hr class="bg-lightp-1">
+   <!-- Footer --> 
+   <footer class="bg-dark text-center text-white">
+    <!-- Grid container --> <div class="container p-4"> 
+	<!-- Section: Social media --> <section class="mb-4"> 
+	<!-- Facebook --> <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button">
+	 <i class="fab fa-facebook-f"></i>
+</a>
+<!-- Twitter -->
+<a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#!" role="button">
+<i class="fab fa-twitter"></i>
+</a>
+<!-- Instagram -->
+<a class="btn btn-primary btn-floating m-1" style="background-color:#CF9715" ;=";" href="#!" role="button">
+<i class="fab fa-instagram"></i>
+</a>
+<!-- Linkedin -->
+<a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca;" href="#!" role="button">
+<i class="fab fa-linkedin-in"></i>
+</a>
+</section>
+<!-- Section: Social media -->
+<!-- Section: Form -->
+<section>
+<form action="newsletter" method="post">
+<!--Grid row-->
+<div class="row d-flex justify-content-center">
+  <!--Grid column-->
+  <div class="col-auto">
+    <p class="pt-2">
+      <strong style="color:#CF9715">Sign up for our newsletter</strong>
+    </p>
+  </div>
+  <!--Grid column-->
+  <!--Grid column-->
+  <div class="col-md-5 col-12">
+    <!-- Email input -->
+    <div class="form-outline bg-white form-dark mb-4">
+      <input type="email" id="form5Example2" class="form-control" name="adresseMail"/>
+      <label class="form-label" for="form5Example2">Email address</label>
+    </div>
+  </div>
+  <!--Grid column-->
+  <!--Grid column-->
+  <div class="col-auto">
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-outline-light mb-4" style="color:#CF9715">
+      Subscribe
+    </button>
+  </div>
+  <!--Grid column-->
+</div>
+<!--Grid row-->
+</form>
+</section>
+<!-- Section: Form -->
+<!-- Section: Text -->
+<section class="mb-4"></section>
+<!-- Section: Text -->
+<section>
+<!--Grid row-->
+<div class="row">
+<!--Grid column-->
+<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+  <h5 class="text-uppercase"></h5>
+</div>
+<!--Grid column-->
+<!--Grid column-->
+<div class=" text-center">
+  <h5 class="text-uppercase" style="color:#CF9715">Links</h5>
+  <ul class="list-unstyled mb-0" style="color:#CF9715">
+    <li>
+      <a href="#" class="text-white">Contact us</a>
+    </li>
+    <li>
+      <a href="{{ path('apropos')}}" class="text-white">About Us</a>
+    </li>
+  </ul>
+</div>
+<!--Grid row-->
+</section>
+<!-- Section: Links -->
+</div>
+<!-- Grid container -->
+<!-- Copyright -->
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); ">
+© 2021 Copyright
+</div>
+<!-- Copyright -->
+</footer>
+<!-- Footer -->
+{% endblock %}

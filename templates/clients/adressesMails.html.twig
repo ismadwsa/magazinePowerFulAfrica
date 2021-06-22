@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JoueurssController!
+{% endblock %}
+
+{% block body %}
+
+	<body class="container_fluid bg-dark">
+	
+    	<h1 class="text-white">Personnes Inscrit aux  Newsleter</h1>
+		{% for element in mesAdressesMails %}
+			<div class="alert alert-warning col-5 mx-auto my-3" role="alert">
+				{{ element.adresseMail }}
+			</div>
+		{% endfor %}
+
+
+	</body>
+
+
+{% endblock %}

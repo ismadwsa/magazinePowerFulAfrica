@@ -1,0 +1,32 @@
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+{% block body %}
+<br>
+<h1 style="text-align:center">Modifier la publicité</h1>
+<br>
+<br>
+<div class="container mt-7">
+    <div class="row justify-content-around justify-content-center">
+
+         
+
+
+            {{ form_start(formContact) }}
+
+            {{ form_widget(formContact.nom) }} <br><br> 
+            {{ form_widget(formContact.prenom) }} <br><br> 
+            {{ form_widget(formContact.email) }} <br><br> 
+            {{ form_widget(formContact.message) }} <br><br
+       
+
+            <button type="submit" class="btn btn-warning">Enregistrer</button>
+
+            {{ form_end(formContact) }}
+
+        
+    </div>
+    
+</div>{% endblock %}

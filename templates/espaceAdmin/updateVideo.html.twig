@@ -1,0 +1,21 @@
+{% form_theme formVideo 'bootstrap_4_layout.html.twig' %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% block stylesheets %}
+  {#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+{% block body %}
+  <br>
+  <h1 style="text-align:center">Modifier l'article</h1>
+  <br>
+  <br>
+  <div class="container mt-7">
+    <div class="row justify-content-around justify-content-center">
+      {{ form_start(formVideo) }}
+      {{ form_widget(formVideo.video) }}
+      <br><br>
+      {{ form_widget(formVideo.titre) }}
+      <button type="submit" class="btn btn-warning">Enregistrer</button>
+      {{ form_end(formVideo) }}
+    </div>
+  </div>
+{% endblock %}

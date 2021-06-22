@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello ArticlesController!
+{% endblock %}
+{% block body %}
+  <br>
+  <h1 style="text-align:center">Welcome to our Login Page</h1>
+  <br>
+  <br>
+  <div class="container col-4 m-auto mt-7">
+    <div class="row justify-content-around justify-content-center">
+      <form action="" method="post">
+        <input class="form-control" type="text" name="email" placeholder="Email">
+        <br>
+        <input class="form-control" type="password" name="password" placeholder="Password">
+        <br>
+        <button type="submit" class="btn btn-warning">Sign In</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

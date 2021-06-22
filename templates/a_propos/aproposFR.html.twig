@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticlesController!
+{% endblock %}
+
+{% block body %}
+	
+
+<header>
+					{# navbarre #}
+					<div class="bg-dark mb-5 ">
+						<nav class="nav navbar navbar-expand-lg border ">
+							<ol
+								class="breadcrumb   p-1">
+								<!-- Icon dropdown -->
+
+								<li class="breadcrumb-item py-1 ">
+									<a href="#" class='text-light '>
+										<i class="france flag "></i>French</a>
+								</li>
+
+								<li class="breadcrumb-item pr-5 py-1">
+									<a href="{{ path('apropos')}}" class='text-light '>
+										<i class="united kingdom flag"></i>English</a>
+								</li>
+
+								<li class="breadcrumb-item p-1">
+									<a href="{{ path('accueil')}}" class='text-light display-6'>Home</a>
+								</li>
+								<li class="breadcrumb-item p-1">
+									<a href="#" class='text-light display-6'>
+										About</a>
+								</li>
+								<li class="breadcrumb-item active p-1 " aria-current="page">
+									<a href="https://www.yumpu.com/en/document/read/65381912/1st-issue-powerful-africa-edition-15-mars-2021" class='text-light display-6'>Magazine</a>
+								</li>
+
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+<body class="bg-dark row">
+     <div class="col-3">
+					<img src="http://powerfulafrica.com/wp-content/uploads/2021/03/image0-2.jpeg" style="height:60%; widght:65%;" alt="">
+				</div>
+    <div class="col-5 offset-1 my-auto  text-white"><h1 style="color:#CF9715">Notre mission</h1>Powerful Africa, le premier magazine qui met en avant l’innovation des personnalités africaines inspirantes dans le monde. Chaque mois vous aurez l’occasion de pouvoir découvrir et redécouvrir des personnalités des projets qui valorisent l’Afrique. Chaque mois une découverte un portrait de plusieurs personnalités connu ou inconnu, ceux qui ne sont pas forcément dans la presse, visible par tous. Soyons acteur de notre réussite, valorisons ceux qui nous valorisent où qu’ils soient dans le monde. Soyons prêt pour le renouveau Celui qui ne différencie pas, celui qui ne regarde plus l’origine pour apprécier le travail.
+
+
+
+</div>
+</body>
+
+				<!-- Footer -->
+				<footer
+					class="bg-dark text-center text-white">
+					<!-- Grid container -->
+					<div
+						class="container p-4">
+						<!-- Section: Social media -->
+						<section
+							class="mb-4">
+							<!-- Facebook -->
+							<a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+
+							<!-- Twitter -->
+							<a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#!" role="button">
+								<i class="fab fa-twitter"></i>
+							</a>
+
+							<!-- Instagram -->
+							<a class="btn btn-primary btn-floating m-1" style="background-color:#CF9715" ; href="#!" role="button">
+								<i class="fab fa-instagram"></i>
+							</a>
+
+							<!-- Linkedin -->
+							<a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca;" href="#!" role="button">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+
+						</section>
+						<!-- Section: Social media -->
+
+						<!-- Section: Form -->
+						<section>
+							<form
+								action="newsletter" method="post">
+								<!--Grid row-->
+								<div
+									class="row d-flex justify-content-center">
+									<!--Grid column-->
+									<div class="col-auto">
+										<p class="pt-2">
+											<strong style="color:#CF9715">Sign up for our newsletter</strong>
+										</p>
+									</div>
+									<!--Grid column-->
+
+									<!--Grid column-->
+									<div
+										class="col-md-5 col-12">
+										<!-- Email input -->
+										<div class="form-outline bg-white form-dark mb-4">
+											<input type="email" id="form5Example2" class="form-control" name="adresseMail"/>
+											<label class="form-label" for="form5Example2">Email address</label>
+										</div>
+									</div>
+									<!--Grid column-->
+
+									<!--Grid column-->
+									<div
+										class="col-auto">
+										<!-- Submit button -->
+										<button type="submit" class="btn btn-outline-light mb-4" style="color:#CF9715">
+											Subscribe
+										</button>
+									</div>
+									<!--Grid column-->
+								</div>
+								<!--Grid row-->
+							</form>
+						</section>
+						<!-- Section: Form -->
+
+						<!-- Section: Text -->
+						<section class="mb-4"></section>
+						<!-- Section: Text -->
+
+
+						<section>
+							<!--Grid row-->
+							<div
+								class="row">
+								<!--Grid column-->
+								<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+									<h5 class="text-uppercase"></h5>
+
+
+								</div>
+								<!--Grid column-->
+
+								<!--Grid column-->
+								<div class=" text-center">
+									<h5 class="text-uppercase" style="color:#CF9715">Links</h5>
+
+									<ul class="list-unstyled mb-0" style="color:#CF9715">
+										<li>
+											<a href="#!" class="text-white">Contact us</a>
+										</li>
+										<li>
+											<a href="#!" class="text-white">About Us</a>
+										</li>
+									</ul>
+								</div>
+
+
+								<!--Grid column-->
+							{# <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+															<h5 class="text-uppercase" style="color:#CF9715">Links</h5>
+							
+															<ul class="list-unstyled mb-0">
+																<li>
+																	<a href="#!" class="text-white">Link 1</a>
+																</li>
+																<li>
+																	<a href="#!" class="text-white">Link 2</a>
+																</li>
+																<li>
+																	<a href="#!" class="text-white">Link 3</a>
+																</li>
+																<li>
+																	<a href="#!" class="text-white">Link 4</a>
+																</li>
+															</ul>
+														</div> #}
+								<!--Grid column-->
+								{# </div> #}
+								<!--Grid row-->
+							</section>
+							<!-- Section: Links -->
+						</div>
+						<!-- Grid container -->
+						<!-- Copyright -->
+						<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); ">
+							© 2021 Copyright
+						</div>
+						<!-- Copyright -->
+					</footer>
+					<!-- Footer -->
+				{% endblock %}
